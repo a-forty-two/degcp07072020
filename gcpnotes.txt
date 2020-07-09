@@ -1,0 +1,143 @@
+bq load -> VERY VERY IMPORTANT 
+https://cloud.google.com/bigquery/docs/information-schema-datasets
+
+
+
+array -> same data type [REPEATED]
+struct -> diff or same data types, but data was 'related together'
+ [RECORD]
+marks in 10 subjects
+
+if marks-> int16, [ m1, m2....m10] 
+if name -> string, ['shaktiman', 'pikachu'...] 
+
+(name, subject, marks!)
+-> ARRAY of STRUCT
+ -> STRUCT can have more arrays or STRUCTs as children!
+
+
+data: { 
+field_name: [ 10,20,30]
+}
+
+UNNEST(), ARRAY_AGG, -> unnesting and nesting (along with struct)
+diff b/w COUNT and DISTINCT COUNT -> integrity check 
+COUNTIF -> IF statement -> isolate problems in advance (slide 10 in notes)
+besides NULL, BLANK is also possible 
+
+EL -> when data was in usable format
+ELT -> when data was same, but transformations were diff
+ETL -> in all other cases (specially use-case specific) 
+
+Any production dataset where the transformation can be expressed in SQL
+Raw data-> GCS -> BigQuery (ELT)
+
+100% sure data is clean 
+Raw data -> Big Query (EL) 
+
+
+Data consistency demo:
+
+1)
+CREATE OR REPLACE TABLE pikachu.monkey AS
+
+SELECT
+123 as height,
+'Tomato' as name;
+
+SELECT * from pikachu.monkey; 
+
+2) removed data 
+DELETE FROM pikachu.monkey WHERE true;
+
+3) consistency check with HAVING clause
+SELECT COUNT(*) as rowcount
+from pikachu.monkey
+HAVING 
+  IF(rowcount > 0, true, ERROR(FORMAT('%t count resulted in bad rows', rowcount)));
+  
+SELECT * from pikachu.monkey WHERE name = 'Tomato';
+
+1.2Pb/s -> almost half of internet speed
+NRT latency (-> 0ms) 
+
+Data could have resided in DATA LAKE ITSELF and PROCESSED BY OTHER
+TOOLS WITHOUT NEEDING TO BE ACTUALLY TRANSPORTED!
+
+
+Structured v/s Unstructured Data
+Google maps-> Name, Lat, Long, { } 
+Drive from A to B -> structured for me!
+Fly from A to B -> ? UNSTRUCTURED!!! 
+
+SQL v/s MongoDB
+Relation v/s Non Relational
+
+
+Data Catalogue -> Data's ACCESS CONTROL LIST
+
+-> yester -> SCHEMA-> DC could've prevented unwanted data from coming in
+-> today -> Using TAGS (METADATA for tables) 
+		or SECURITY (DLP api) 
+
+-> Why? -> UNIFIED DATA DISCOVERY
+	- inbuilt Data Loss Prevention API
+
+abc@gmail.com -> PII -> a***@g***.com 
+
+-> Row level data access
+	-> IAM : Dataset -> all the tables 
+	
+	-> Data at Rest-> encryption 
+	-> Data in Motion-> TLS 
+
+
+
+Cheaper VMs-> Preemtible VMs -> CLUSTER 
+
+20 potatoes 
+1-> 1 person, who eats 5 potatoes per min-> CPU
+	->small instructions (add ax, mov bx, cx int 21h..)
+2-> a person, who eats 1 potato per min, but 10 such people-> GPU
+	-> slow ops but HUGE THROUGHPUT! 
+	-> MUCH MORE DATA is processed! 
+
+who will finish first?
+-> 2nd!
+
+
+replication factor -> 3
+
+biggest size -> 1 GB 
+
+biggest_size_of_data X replication factor + 4 GB 
+
+Spark -> RAM biggest_size_of_data X replication factor + 8 GB 
+HDFS -> disk space  (biggest_size_of_data X replication factor+ 100s)
+
+GCS -> data lake
+
+Data Proc -> ONLY compute cluster
+GCS -> persistent 
+
+UDF -> JavaScript 
+
+https://cloud.google.com/dataproc/docs/concepts/jobs/life-of-a-job
+
+https://cloud.google.com/dataproc/docs/concepts/jobs/restartable-jobs
+
+https://cloud.google.com/dataproc/docs/guides/dataproc-images
+
+https://cloud.google.com/dataproc/docs/concepts/workflows/using-yamls
+
+Data Catalog -> 
+
+
+
+
+
+
+
+
+
+
