@@ -130,13 +130,93 @@ https://cloud.google.com/dataproc/docs/guides/dataproc-images
 
 https://cloud.google.com/dataproc/docs/concepts/workflows/using-yamls
 
+https://cloud.google.com/bigtable/docs/performance
+
 Data Catalog -> 
 
+Programing:
+010101-> mov ax,10-> A,B -> C->C++->Java
+
+Browsers-> HTML/CSS/JS-> what to do, machine figured out the best
+	way to do it 
+
+Imperitive vs Declarative 
+- immediate execution                 - build a DAG
+	manage heap + stack 
 
 
+                             I             D
+a=1         a=?             1              ok
+b=2         b=?             2              ok
+c=a+b       c=?             3              ok 
+print(c)    ??              print(3)       calc->print(c)
+
+Lazy Evaluation -> Declarative Languages (PySpark, Scala, TF...) 
+(slow)
+
+Imperative/immediate/Eager Evaluation -> imp
+	-> Near Real time responses
+	-> apps, mobile, sensors/devices/actuators 
+
+Variety of data 
+IoT-> Telemetry, Operational, Lifecycle 
+(same device) -> JSON, NoSQL, BSON
 
 
+- how many devices?
+	-> Bulk-> VOLUME-> SQL no no
+	-> not made for volume-> SQL
 
+-> MongoDB -> BigTable (large volume)
+small devices -> Firestore 
+
+images -> gcs/data lake, URI-> nosql (BigTable/Firestore) + metadata
+
+
+BigQuery-> Stream and JOBS are DIFF
+
+Streams are infinite-> Streaming API of BigQuery
+-> CLient Py 
+
+Big Table-> Each key/pair value < 10 MB
+
+Data size < 1 TB -> Big Table won't be able to perform
+
+Cluster based COLOSSUS file system
+	- TABLETS-> pointer table pointing to DISK storage 
+	- each VM 300GB of FS 
+
+Metadata -> TRIE 
+
+Where not to use BigTable:
+- Transactions (use Spanner or CloudSQL)
+- Structure (use BigQuery)
+
+Tablet
+Pointers-> Address_id
+
+
+Strings, arrays, List, , Disks, Tables.... 
+
+-> release pointer, create a new one 
+
+HDD-> 500 QPS
+SSD-> 10,000 QPS
+
+response time = reading delay + processing delay
+
+
+Key Visualizer: (automatically generates usage graphs based on 
+row keys)
+1) last 24 hours-> at least 30 GB of data 
+OR
+2) last 24 hours-> avg (all reads+all writes) > 10k rows per second
+
+
+Autoscaling -> CLUSTERS 
+
+COLOSSUS FS-> More machines you have-> faster queries as result 
+Autoscaling -> min -> 10 nodes 
 
 
 
