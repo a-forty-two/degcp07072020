@@ -132,6 +132,10 @@ https://cloud.google.com/dataproc/docs/concepts/workflows/using-yamls
 
 https://cloud.google.com/bigtable/docs/performance
 
+https://services.google.com/fh/files/misc/next-19-google-cloud-customer-voices-digital-book.pdf
+
+https://cloud.google.com/bigquery/docs/gis-intro
+
 Data Catalog -> 
 
 Programing:
@@ -143,6 +147,8 @@ Browsers-> HTML/CSS/JS-> what to do, machine figured out the best
 Imperitive vs Declarative 
 - immediate execution                 - build a DAG
 	manage heap + stack 
+prediction = inputs * weights + bias
+
 
 
                              I             D
@@ -219,5 +225,32 @@ COLOSSUS FS-> More machines you have-> faster queries as result
 Autoscaling -> min -> 10 nodes 
 
 
+
+Kubeflow pipelines-> 
+
+kfctl-> cmd tool 
+
+sep pipeline-> TRAINING 
+
+pipeline for production 
+
+
+export API_KEY=AIzaSyBFrd78Q_yp2XV48m095JEKWjcLZLJw9jI
+
+
+Certificate -> CRT + Private Token -> BULK Auth 
+
+Client Apps => API Keys (Server side apps) 
+
+export KUBEFLOW_USERNAME=student-01-627f1136f77a@qwiklabs.net
+export KUBEFLOW_PASSWORD=npwZNL74BCK2
+
+
+Coursera + linux academy 
+
+-> documentation, architecture, place in a pipline 
+
+- ML on GCP
+- DL on GCP 
 
 
